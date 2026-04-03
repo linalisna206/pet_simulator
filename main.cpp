@@ -3,14 +3,23 @@
 using namespace std;
 
 struct pet{
-    srtring jenis;
+    string jenis;
     string nama_pet;
     int lapar;
     int bahagia;
     int energi;
-    int koin
+    int koin;
 };
 
 int main() {
+    
+    string jenis_pet;
+    string nama_pet;
+    
     cout << "====== PET SIMULATOR ======" << endl;
+    cout << "Masukan jenis pet :" << endl;
+    cin >> jenis_pet;
+    cout << "Masukan nama pet :" << endl;
+    cin >> nama_pet;
+    
 }
