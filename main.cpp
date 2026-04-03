@@ -21,5 +21,9 @@ int main() {
     cin >> jenis_pet;
     cout << "Masukan nama pet :" << endl;
     cin >> nama_pet;
+
+    cout << "======== DATA PET ========" << endl;
+    cout << "Jenis pet: " << jenis_pet << endl;
+    cout << "Nama pet: " << nama_pet << endl;
     
-}
+ }
