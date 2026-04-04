@@ -50,6 +50,14 @@ void BeliMakanan(pet &p, aktivitas* &head){
             p.koin -= 5;
             p.apel++;
             TambahAktivitas(head, "Membeli apel");
+            cout << "Berhasil membeli apel!\n";
+            cout << "====================" << endl;
+            cout << "Sisa koin: " << p.koin << endl;
+
+            cout << "=== STOK MAKANAN ===" << endl;
+            cout << "\U0001F34E Apel   : " << p.apel << endl;
+            cout << "\U0001F356 Daging : " << p.daging << endl;
+            cout << "\U0001F35E Roti   : " << p.roti << endl;
         } 
         else cout << "Koin tidak cukup!";
     }
@@ -58,6 +66,14 @@ void BeliMakanan(pet &p, aktivitas* &head){
             p.koin -= 15;
             p.daging++;
             TambahAktivitas(head, "Membeli daging");
+            cout << "Berhasil membeli daging!\n";
+            cout << "====================" << endl;
+            cout << "Sisa koin: " << p.koin << endl;
+
+            cout << "=== STOK MAKANAN ===" << endl;
+            cout << "\U0001F34E Apel   : " << p.apel << endl;
+            cout << "\U0001F356 Daging : " << p.daging << endl;
+            cout << "\U0001F35E Roti   : " << p.roti << endl;
         } else cout << "Koin tidak cukup!\n";
     }
     else if (pilih == 3){
@@ -65,6 +81,14 @@ void BeliMakanan(pet &p, aktivitas* &head){
             p.koin -= 7;
             p.roti++;
             TambahAktivitas(head, "Membeli roti");
+            cout << "Berhasil membeli roti!\n";
+            cout << "====================" << endl;
+            cout << "Sisa koin: " << p.koin << endl;
+
+            cout << "=== STOK MAKANAN ===" << endl;
+            cout << "\U0001F34E Apel   : " << p.apel << endl;
+            cout << "\U0001F356 Daging : " << p.daging << endl;
+            cout << "\U0001F35E Roti   : " << p.roti << endl;
         } else cout << "Koin tidak cukup!\n";
     }
     else {
@@ -74,7 +98,7 @@ void BeliMakanan(pet &p, aktivitas* &head){
 
 // Read
 void LihatAktivitas(aktivitas* &head){
-    cout << "\n ====RIWAYAT AKTIVITAS PET====" << endl;
+    cout << "\n======= \U0001F4DC RIWAYAT AKTIVITAS PET =======\n";
     aktivitas* temp = head;
     if (!temp) cout << "Belum ada aktivitas yang dilakukan" << endl;
     while (temp) {
@@ -103,12 +127,13 @@ bool CekStatusPenuh(pet &p){
 void Makan(pet &p, aktivitas* &head){
     int pilih;
     cout << "=== PILIH MAKANAN ===" << endl;
-    cout << "1. Apel (stok: " << p.apel << ")" << endl;
-    cout << "2. Daging (stok: " << p.daging << ")" << endl;
-    cout << "3. Roti (stok: " << p.roti<< ")" << endl;
+    cout << "1. \U0001F34E Apel     (stok: " << p.apel << ")" << endl;
+    cout << "2. \U0001F356 Daging   (stok: " << p.daging << ")" << endl;
+    cout << "3. \U0001F35E Roti     (stok: " << p.roti<< ")" << endl;
     cout << "4. Kembali" << endl;
     cout << "Pilih makanan: ";
     cin >> pilih;
+
 
     if (pilih == 4) return;
 
@@ -117,6 +142,8 @@ void Makan(pet &p, aktivitas* &head){
             p.apel--;
             p.lapar -= 5;
             TambahAktivitas(head, "Memberi apel");
+            cout << "Berhasil memberi apel!\n";
+            cout << "Lapar sekarang: " << p.lapar << endl;
         }
         else{
             cout << "Apel habis!";
@@ -127,6 +154,8 @@ void Makan(pet &p, aktivitas* &head){
             p.daging--;
             p.lapar -= 15;
             TambahAktivitas(head, "Memberi daging");
+            cout << "Berhasil memberi daging!\n";
+            cout << "Lapar sekarang: " << p.lapar << endl;
         }
         else {
             cout << "Daging habis!";
@@ -137,6 +166,8 @@ void Makan(pet &p, aktivitas* &head){
             p.roti--;
             p.lapar -= 7;
             TambahAktivitas(head, "Memberi roti");
+            cout << "Berhasil memberi roti!\n";
+            cout << "Lapar sekarang: " << p.lapar << endl;
         }
         else {
             cout << "Roti habis!";
@@ -185,12 +216,10 @@ void Tidur(pet &p, aktivitas* &head) {
         p.energi += energi_dapat;
         if (p.energi > 100) p.energi = 100;
 
-        p.lapar += 5;
-        if (p.lapar > 100) p.lapar = 100;
-
         TambahAktivitas(head, "Tidur " + to_string(durasi) + " detik");
 
         cout << "\nSelesai tidur!\n";
+        cout << "Energi sekarang: " << p.energi << endl;
         return; // Balik ke menu utama juga
     }
 }
@@ -207,7 +236,7 @@ void Main(pet &p, aktivitas* &head) {
     cout << "\n=== PILIH AKTIVITAS MAIN ===\n";
     cout << "1. Main bola (+15 koin, +15 bahagia, -10 energi)\n";
     cout << "2. Jalan-jalan (+20 koin, +20 bahagia, -15 energi)\n";
-    cout << "3. Main sendiri (+10 koin, +10 bahagia, -5 energi)\n";
+    cout << "3. Main lompat tinggi (+10 koin, +10 bahagia, -5 energi)\n";
     cout << "4. Kembali\n";
     cout << "Pilihan: ";
     cin >> pilih;
@@ -219,18 +248,27 @@ void Main(pet &p, aktivitas* &head) {
         p.energi -= 10;
         p.bahagia +=10;
         TambahAktivitas(head, "Main bola");
+        cout << "Selesai bermain!\n";
+        cout << "Bahagia sekarang   : " << p.bahagia << endl;
+        cout << "Koin sekarang      : " << p.koin << endl;
     }
     else if (pilih == 2) {
         p.koin += 20;
         p.energi -= 15;
         p.bahagia +=15;
         TambahAktivitas(head, "Jalan-jalan");
+        cout << "Selesai bermain!\n";
+        cout << "Bahagia sekarang   : " << p.bahagia << endl;
+        cout << "Koin sekarang      : " << p.koin << endl;
     }
     else if (pilih == 3) {
         p.koin += 10;
         p.energi -= 5;
         p.bahagia +=10;
-        TambahAktivitas(head, "Main sendiri");
+        TambahAktivitas(head, "Main lompat tinggi");
+        cout << "Selesai bermain!\n";
+        cout << "Bahagia sekarang   : " << p.bahagia << endl;
+        cout << "Koin sekarang      : " << p.koin << endl;
     }
     else {
         cout << "Pilihan tidak valid!\n";
@@ -322,7 +360,7 @@ int main() {
 
     srand(time(0)); // Random poin awal pet
 
-    cout << "====== PET SIMULATOR ======\n";
+    cout << "====== \U0001F3AE PET SIMULATOR ======\n";
     cout << "Masukan jenis pet: " << endl;
     cout << "1. Kucing" << endl;
     cout << "2. Hamster" << endl;
@@ -359,6 +397,7 @@ int main() {
     myPet.roti = 0;
 
     cout << "\nPet memiliki kondisi awal acak!\n";
+    cout << "====================" << endl;
     cout << "Nama    : " << myPet.nama_pet << endl;
     cout << "Jenis   : " << myPet.jenis << endl;
 
@@ -367,13 +406,15 @@ int main() {
     bool jalan = true;
 
     while (jalan) {
-        cout << "\n=== MENU ===\n";
-        cout << "1. Lihat Status\n";
-        cout << "2. Makan\n";
-        cout << "3. Beli Makanan\n";
-        cout << "4. Tidur\n";
-        cout << "5. Main\n";
-        cout << "6. Lihat Aktivitas\n";
+        cout << "\n=================================\n";
+        cout << "         \U0001F3AE PET SIMULATOR        \n";
+        cout << "=================================\n";
+        cout << "1. \U0001F4CA Lihat Status\n";
+        cout << "2. \U0001F37D  Makan\n";
+        cout << "3. \U0001F6D2 Beli Makanan\n";
+        cout << "4. \U0001F634 Tidur\n";
+        cout << "5. \U0001F3BE Main\n";
+        cout << "6. \U0001F4DC Lihat Aktivitas\n";
 
     if (CekStatusPenuh(myPet)) {
         cout << "7. Lepas ke alam bebas (Pet dalam keadaan terbaik!)\n";
@@ -389,12 +430,14 @@ int main() {
         switch (pilihan) {
             case 1:
                 cout << "\n=== STATUS ===\n";
+                cout << "\n========== STATUS PET ==========\n";
                 cout << "Nama    : " << myPet.nama_pet << endl;
                 cout << "Jenis   : " << myPet.jenis << endl;
-                cout << "Lapar   : " << myPet.lapar << endl;
-                cout << "Bahagia : " << myPet.bahagia << endl;
-                cout << "Energi  : " << myPet.energi << endl;
-                cout << "Koin    : " << myPet.koin << endl;
+                cout << "--------------------------------\n";
+                cout << "\U0001F356 Lapar   : " << myPet.lapar << endl;
+                cout << "\U0001F60A Bahagia : " << myPet.bahagia << endl;
+                cout << "\U000026A1 Energi  : " << myPet.energi << endl;
+                cout << "\U0001F4B0 Koin    : " << myPet.koin << endl;
                 break;
 
             case 2:
